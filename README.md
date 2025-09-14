@@ -126,7 +126,7 @@ Error:
   "error": "Descriptive message"
 }
 
-**Workflow Example**
+# Workflow Example
 # 1) Upload an image
 curl -X POST "http://localhost:8000/api/images" -F "file=@test.jpg"
 
@@ -151,7 +151,7 @@ rows = con.execute("SELECT id, original_name, status, created_at FROM images ORD
 print(json.dumps([{"id":r[0],"name":r[1],"status":r[2],"created_at":r[3]} for r in rows], indent=2))
 PY
 
-**Logging**
+# Logging
 # Console Logs
 docker logs -f image-pipeline
 
