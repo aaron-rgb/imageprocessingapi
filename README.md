@@ -152,8 +152,9 @@ print(json.dumps([{"id":r[0],"name":r[1],"status":r[2],"created_at":r[3]} for r 
 PY
 
 **Logging**
-# console logs
+# Console Logs
 docker logs -f image-pipeline
-# file logs inside the container
+
+# File logs inside the container
 docker exec -it image-pipeline sh -c "tail -n 100 /app/logs/app.log"
 
