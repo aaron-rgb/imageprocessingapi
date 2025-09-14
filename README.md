@@ -1,4 +1,4 @@
-# imageprocessingapi
+# Image Processing API
 ## Project Overview
 ## This Project implements an Image Processing Pipelien.
 ## The API allows users to:
