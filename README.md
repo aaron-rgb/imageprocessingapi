@@ -21,8 +21,8 @@ Option 1 : Run with Docker (recommended)
 # API Documentation
 # 1) POST /api/images
    Upload an image (JPG/PNG). Processing runs in the background; response returns a queued status and thumbnail URLs.
-   Request (curl): curl -X POST "http://localhost:8000/api/images" -F "file=@test.jpg"
-  Response: 
+   # Request (curl): curl -X POST "http://localhost:8000/api/images" -F "file=@test.jpg"
+  # Response: 
   {
     "status": "queued",
     "data": {
