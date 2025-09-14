@@ -63,6 +63,7 @@ Response:
     }
   "error": null
 }
+
 # 3) GET /api/images/{id}
 Get metdata, caption, EXIF, and thumbnail URLs for a specific image.
 
