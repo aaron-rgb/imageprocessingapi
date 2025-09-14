@@ -1,7 +1,7 @@
 # imageprocessingapi
-# Project Overview
-# This Project implements an Image Processing Pipelien.
-# The API allows users to:
+## Project Overview
+## This Project implements an Image Processing Pipelien.
+## The API allows users to:
   1) Upload images (JPG/PNG)
   2) Generate thumbnails (small = 128px, medium = 512px)
   3) Extract metadata and EXIF data
