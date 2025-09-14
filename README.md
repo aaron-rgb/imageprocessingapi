@@ -19,8 +19,8 @@ Option 1 : Run with Docker (recommended)
 
 
 # API Documentation
-**1) POST /api/images
-**   Upload an image (JPG/PNG). Processing runs in the background; response returns a queued status and thumbnail URLs.
+# 1) POST /api/images
+   Upload an image (JPG/PNG). Processing runs in the background; response returns a queued status and thumbnail URLs.
    Request (curl): curl -X POST "http://localhost:8000/api/images" -F "file=@test.jpg"
   Response: 
   {
@@ -40,7 +40,7 @@ Option 1 : Run with Docker (recommended)
   Errors:
   { "status":"error","data":null,"error":"Unsupported file type. Use JPG or PNG." }
 
-**2) GET /api/images**
+# 2) GET /api/images
 List all images (processed or processing).
 Request(curl): curl http://localhost:8000/api/images
 Response:
@@ -59,8 +59,8 @@ Response:
     }
   "error": null
 }
-**3) GET /api/images/{id}
-**Get metdata, caption, EXIF, and thumbnail URLs for a specific image.
+# 3) GET /api/images/{id}
+Get metdata, caption, EXIF, and thumbnail URLs for a specific image.
 Request (curl): curl "http://localhost:8000/api/images/<image_id>"
 Response:
 {
@@ -82,15 +82,15 @@ Response:
 }
 Error:
 { "status":"error","data":null,"error":"Image not found" }
-**4) GET /api/images/{id}/thumbnails/{small|medium}
-**
+# 4) GET /api/images/{id}/thumbnails/{small|medium}
+
 Request (curl):
 curl -o thumb_small.jpg "http://localhost:8000/api/images/<image_id>/thumbnails/small"
 curl -o thumb_medium.jpg "http://localhost:8000/api/images/<image_id>/thumbnails/medium"
 Error:
 { "status":"error","data":null,"error":"Thumbnail not ready or missing" }
-**4) GET /api/stats
-**
+
+# 5) GET /api/stats
 Aggregate processing statistics.
 Request (curl): curl http://localhost:8000/api/stats
 Response:
