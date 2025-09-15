@@ -1,7 +1,7 @@
 # Image Processing API
 ## Project Overview
-## This Project implements an Image Processing Pipelien.
-## The API allows users to:
+### This Project implements an Image Processing Pipelien.
+#### The API allows users to:
   1) Upload images (JPG/PNG)
   2) Generate thumbnails (small = 128px, medium = 512px)
   3) Extract metadata and EXIF data
@@ -19,7 +19,7 @@ Option 1 : Run with Docker (recommended)
 
 
 # API Documentation
-# 1) POST /api/images
+### 1) POST /api/images
    Upload an image (JPG/PNG). Processing runs in the background; response returns a queued status and thumbnail URLs.
    
    Request (curl): curl -X POST "http://localhost:8000/api/images" -F "file=@test.jpg"
@@ -42,7 +42,7 @@ Option 1 : Run with Docker (recommended)
   Errors:
   { "status":"error","data":null,"error":"Unsupported file type. Use JPG or PNG." }
 
-# 2) GET /api/images
+### 2) GET /api/images
 List all images (processed or processing).
 
 Request(curl): curl http://localhost:8000/api/images
@@ -64,7 +64,7 @@ Response:
   "error": null
 }
 
-# 3) GET /api/images/{id}
+### 3) GET /api/images/{id}
 Get metdata, caption, EXIF, and thumbnail URLs for a specific image.
 
 Request (curl): curl "http://localhost:8000/api/images/<image_id>"
@@ -91,7 +91,7 @@ Response:
 Error:
 { "status":"error","data":null,"error":"Image not found" }
 
-# 4) GET /api/images/{id}/thumbnails/{small|medium}
+### 4) GET /api/images/{id}/thumbnails/{small|medium}
 
 Request (curl):
 curl -o thumb_small.jpg "http://localhost:8000/api/images/<image_id>/thumbnails/small"
@@ -100,7 +100,7 @@ curl -o thumb_medium.jpg "http://localhost:8000/api/images/<image_id>/thumbnails
 Error:
 { "status":"error","data":null,"error":"Thumbnail not ready or missing" }
 
-# 5) GET /api/stats
+### 5) GET /api/stats
 Aggregate processing statistics.
 
 Request (curl): curl http://localhost:8000/api/stats
@@ -126,24 +126,24 @@ Error:
   "error": "Descriptive message"
 }
 
-# Workflow Example
-# 1) Upload an image
+## Workflow Example
+### 1) Upload an image
 curl -X POST "http://localhost:8000/api/images" -F "file=@test.jpg"
 
-# 2) List all images
+### 2) List all images
 curl http://localhost:8000/api/images
 
-# 3) Get details (replace <id>)
+### 3) Get details (replace <id>)
 curl "http://localhost:8000/api/images/<id>"
 
-# 4) Download thumbnails
+### 4) Download thumbnails
 curl -o thumb_small.jpg  "http://localhost:8000/api/images/<id>/thumbnails/small"
 curl -o thumb_medium.jpg "http://localhost:8000/api/images/<id>/thumbnails/medium"
 
-# 5) View stats
+### 5) View stats
 curl http://localhost:8000/api/stats
 
-**Optional (To show that the records are in the DB while the container is running)**
+### Optional (To show that the records are in the DB while the container is running)
 docker exec -it image-pipeline python - <<'PY'
 import sqlite3, json
 con = sqlite3.connect("/app/data.db")
@@ -151,10 +151,10 @@ rows = con.execute("SELECT id, original_name, status, created_at FROM images ORD
 print(json.dumps([{"id":r[0],"name":r[1],"status":r[2],"created_at":r[3]} for r in rows], indent=2))
 PY
 
-# Logging
-# Console Logs
+## Logging
+## Console Logs
 docker logs -f image-pipeline
 
-# File logs inside the container
+## File logs inside the container
 docker exec -it image-pipeline sh -c "tail -n 100 /app/logs/app.log"
 
